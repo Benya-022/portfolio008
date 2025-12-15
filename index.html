@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio - นางสาว เบญญา พันแสน</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+        @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+    :root{--bg:#dff1ff;--primary:#1d6fb0;--accent:#ff6b9b;--card:#fafdff;--glass:rgba(255,255,255,0.6);--radius:18px}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family: 'Itim', cursive;line-height:1.45;color:#07262f}
+    body{
+      background: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.6), transparent 10%), var(--bg);
+      padding:28px 16px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+
+    /* floating heart background */
+    .hearts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+    .heart{position:absolute;width:36px;height:36px;background:rgba(255, 148, 214, 0.95);transform:rotate(45deg);border-radius:6px;opacity:0.9}
+    .heart:before, .heart:after{content:'';position:absolute;background:inherit;border-radius:50%}
+    .heart:before{width:36px;height:36px;top:-18px;left:0}
+    .heart:after{width:36px;height:36px;left:-18px;top:0}
+
+    /* animate hearts along Y with random durations via inline style */
+    @keyframes floatUp{0%{transform:translateY(120vh) scale(0.8) rotate(20deg);opacity:0}10%{opacity:0.9}50%{opacity:0.95;transform:translateY(60vh) scale(1) rotate(-10deg)}100%{transform:translateY(-30vh) scale(0.6) rotate(-40deg);opacity:0}}
+
+    /* layout */
+    .wrap{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#e9fbff,#d6f3ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--primary);box-shadow:0 8px 28px rgba(13,40,61,0.08)}
+    nav{display:flex;gap:12px}
+    nav a{padding:8px 12px;border-radius:12px;text-decoration:none;color:rgba(3,48,71,0.9);font-weight:600}
+    .cta{background:linear-gradient(90deg,var(--primary),#2fa0e0);color:white;padding:8px 14px;border-radius:12px;text-decoration:none;font-weight:700}
+
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center}
+    .card{background:var(--card);border-radius:var(--radius);padding:22px;box-shadow:0 10px 30px rgba(13,40,61,0.07)}
+    .hero-left h1{font-size:30px;margin:6px 0}
+    .hero-left p{margin:8px 0 18px;color:#2b566f}
+
+    .profile{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;padding:26px;border-radius:20px;overflow:hidden}
+    .avatar{width:180px;height:180px;border-radius:50%;object-fit:cover;border:6px solid rgba(174,225,255,0.8);box-shadow:0 18px 40px rgba(29,111,176,0.12)}
+    .name{font-weight:800;color:var(--primary);font-size:20px}
+    .role{color:#4c6b7a}
+
+    /* skills */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+    .skill{display:flex;flex-direction:column;gap:8px}
+    .bar{height:12px;background:#f1fbff;border-radius:999px;overflow:hidden}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),#2fa0e0);width:0%;border-radius:999px;transition:width 900ms cubic-bezier(.22,.9,.6,1)}
+
+    /* projects */
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:80px;margin-top:90px}
+    .proj{height:700px;border-radius:10px;overflow:hidden;position:relative;display:flex;align-items:flex-end;padding:10px;color:rgb(500, 500,500);background-size:cover;background-position:center}
+    .proj::after{content:'';position:absolute;inset:20;background:linear-gradient(250deg,transparent,rgba(40,50,30,0.100))}
+    .proj h3{position:relative;margin:0}
+    .proj:hover{transform:translateY(-6px) scale(1.02);transition:transform .50s ease}
+
+    /* contact */
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea{padding:10px;border-radius:10px;border:1px solid rgba(13,40,61,0.08)}
+
+    footer{margin-top:26px;text-align:center;color:#194257}
+
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.projects{grid-template-columns:1fr}}
+
+    /* small decorations */
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,#fff7fb,#ffeef4);border:1px solid rgba(255,107,155,0.07);color:var(--accent);font-weight:700}
+
+  </style>
+</head>
+<body>
+
+  <!-- floating hearts container -->
+  <div class="hearts" aria-hidden>
+    <!-- hearts will be injected by JS -->
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">BP</div>
+        <div>
+          <div style="font-weight:800">นางสาว เบญญา พันแสน</div>
+          <div style="font-size:13px;color:#3f6b7f">Designer • Frontend Developer</div>
+        </div>
+      </div>
+
+      <nav aria-label="เมนูหลัก">
+        <a href="#about">เกี่ยวกับ</a>
+        <a href="#skills">ทักษะ</a>
+        <a href="#projects">ผลงาน</a>
+        <a class="cta" href="#contact">ติดต่อ</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card hero-left">
+        <p style="color:#0b3b50;font-weight:700;letter-spacing:0.6px">สวัสดีค่ะ ฉันคือ</p>
+        <h1>นางสาว เบญญา พันแสน (พลอย)</h1>
+        <p>กำลังศึกษาอยู่วิทยาลัยเทคนิคนครนายก </p>
+        <p>แผนกวิชาเทคโนโลยีสารสนเทศ </p>
+        <p>เกิดวันที่ 27 กรกฎาคม พ.ศ. 2549 อายุ 19 ปี </p>
+        <p>ที่อยู่:บ้านเลขที่ 93/7 หมู่ 7 ตำบลบ้านใหญ่ อำเภอเมืองนครนายก จังหวัดนครนายก 26000</p>
+        <p>อีเมล:ployya2006@gmail.com</p>
+        <p>เบอร์โทรศัพท์:0630822829</p>
+        <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+          <a class="pill" href="#projects">ดูผลงาน</a>
+          <a class="pill" href="#contact">จ้างงาน/ติดต่อ</a>
+        </div>
+
+        <div id="skills" style="margin-top:18px">
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <div style="flex:1;min-width:220px" class="card">
+              <h3 style="margin:0 0 10px 0">ทักษะเด่น</h3>
+              <div class="skill"><label>Graphic Design</label><div class="bar"><i data-percent="95"></i></div></div>
+            </div>
+
+            <div style="flex:1;min-width:220px" class="card">
+              <h3 style="margin:0 0 10px 0">ประวัติการศึกษา</h3>
+              <ul style="margin:0;padding-left:18px">
+                <li>ประถมศึกษา:โรงเรียนวังตูม</li>
+                <li>มัธยมศึกษา:โรงเรียนกบินทร์จริยาคม</li>
+                <li>ประกาศนียบัตรวิชาชีพ (ปวช.) :วิทยาลัยเทคนิคนครนายก</li>
+                <li>ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.) :วิทยาลัยเทคนิคนครนายก</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card profile">
+        <img class="avatar" src="S__46407684.jpg" alt="รูปโปรไฟล์ เบญญา พันแสน" id="avatar" />
+        <div class="name">นางสาว เบญญา พันแสน</div>
+        <div class="role">Designer • Frontend Developer</div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <a class="pill" href="#projects">ดูผลงาน</a>
+          <a class="pill" href="#contact">ติดต่อ</a>
+        </div>
+      </aside>
+    </section>
+
+    <section style="margin-top:22px">
+      <div class="card">
+        <h2 id="projects">ผลงานที่ประทับใจ</h2>
+        <div class="projects">
+          <div class="proj" style="background-image:url('Screenshot\ 2025-12-15\ 104136.png')">
+          </div>
+          <div class="proj" style="background-image:url('Screenshot\ 2025-12-15\ 104235.png')">
+          </div>
+          <div class="proj" style="background-image:url('Screenshot\ 2025-12-15\ 104327.png')">
+          </div>
+          <div class="proj" style="background-image:url('Screenshot\ 2025-12-15\ 104351.png')">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:18px" id="about">
+      <div class="card">
+        <h2>เกี่ยวกับฉัน</h2>
+        <p>นิสัย:เป็นคนร่าเริง รักหมารักแมว พูดมากกับคนสนิท(พูดไม่รู้เรื่อง) ปรับตัวเข้ากับคนอื่นได้ง่าย แต่ขี้งอนขี้น้อยใจ</p>
+        <p>อาหารที่ชอบ:มาม่าเกาหลี ไก่ทอด หม่าล่า ชาบู ชานมไข่มุก</p>
+        <p>งานอดิเรก:ฟังเพลง นอน เล่นเกม ถ่ายรูปแมว</p>
+        <p>กีฬาที่ชื่นชอบ:แบดมินตัน วอลเล่ย์บอล เปตอง</p>
+      </div>
+    </section>
+
+    <section style="margin-top:18px" id="contact">
+      <div class="card">
+        <h2>ติดต่อ</h2>
+        <form onsubmit="event.preventDefault();alert('ขอบคุณค่ะ — ข้อความถูกส่ง (ตัวอย่าง)')">
+          <input type="text" placeholder="ชื่อของคุณ" required />
+          <input type="email" placeholder="อีเมล" required />
+          <textarea rows="4" placeholder="ข้อความ" required></textarea>
+          <button type="submit" class="cta">ส่งข้อความ</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div style="font-size:14px">© <span id="year"></span> นางสาว เบญญา พันแสน — Portfolio</div>
+    </footer>
+  </div>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Skill bars animation
+    const bars = document.querySelectorAll('.bar > i');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const el = e.target;
+          const p = el.getAttribute('data-percent') || '70';
+          el.style.width = p + '%';
+          io.unobserve(el);
+        }
+      })
+    },{threshold:0.25});
+    bars.forEach(b=>io.observe(b));
+
+    // Avatar placeholder (initials) if no image provided
+    const avatar = document.getElementById('avatar');
+    if(!avatar.getAttribute('src') || avatar.getAttribute('src') === ''){
+      const initials = 'BP';
+      const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='360' height='360'><rect width='100%' height='100%' fill='%23e6f8ff'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-family='Inter, Arial' font-size='120' fill='%231d6fb0' font-weight='700'>${initials}</text></svg>`;
+      avatar.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+    }
+
+    // Create floating hearts
+    const heartsContainer = document.querySelector('.hearts');
+    const count = 16; // number of hearts
+    for(let i=0;i<count;i++){
+      const h = document.createElement('div');
+      h.className = 'heart';
+      // random horizontal position
+      const left = Math.random()*110 - 5; // -5% to 105%
+      const size = 18 + Math.random()*48; // 18px - 66px
+      h.style.width = `${size}px`; h.style.height = `${size}px`;
+      h.style.left = left + 'vw';
+      h.style.bottom = - (Math.random()*20) + 'vh';
+      // random duration and delay
+      const dur = 10 + Math.random()*18; // 10s - 28s
+      const delay = -Math.random()*dur;
+      h.style.animation = `floatUp ${dur}s linear ${delay}s infinite`;
+      // slight horizontal drift using transform-origin and translateX via CSS variable
+      h.style.opacity = 0.95 - Math.random()*0.3;
+      heartsContainer.appendChild(h);
+    }
+
+    // Make hearts responsive: regenerate on resize to reposition roughly
+    let resizeTimeout;
+    window.addEventListener('resize',()=>{
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(()=>{
+        heartsContainer.innerHTML = '';
+        for(let i=0;i<count;i++){
+          const h = document.createElement('div');
+          h.className = 'heart';
+          const left = Math.random()*110 - 5;
+          const size = 18 + Math.random()*48;
+          h.style.width = `${size}px`; h.style.height = `${size}px`;
+          h.style.left = left + 'vw';
+          const dur = 10 + Math.random()*18;
+          const delay = -Math.random()*dur;
+          h.style.animation = `floatUp ${dur}s linear ${delay}s infinite`;
+          h.style.opacity = 0.95 - Math.random()*0.3;
+          heartsContainer.appendChild(h);
+        }
+      },150);
+    });
+
+  </script>
+</body>
+</html>
